@@ -20,9 +20,6 @@ export default {
 
 <style>
 #app {
-  width: 100vw;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  text-align: center;
 }
 </style>

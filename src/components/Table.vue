@@ -10,6 +10,7 @@
       <td>{{ contact.country }}</td>
       <td>{{ contact.city }}</td>
       <td>{{ contact.address }}</td>
+      <td><button @click="deleteContact(contact.id)">Remove</button></td>
     </tr>
   </table>
 </template>
@@ -37,6 +38,11 @@ export default {
           console.error(error);
           this.errorMsg = 'Error retrieving data';
         })
+    },
+    deleteContact(id) {
+      axios.delete('http://test01.varid.pl:4080/api/contact/delete/' + id)
+        .then(response => console.log(response))
+        .catch(error => console.error(error))
     }
   }
 }

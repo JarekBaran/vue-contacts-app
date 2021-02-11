@@ -2,8 +2,9 @@ import { createApp } from 'vue';
 import App from './App.vue';
 
 import PrimeVue from 'primevue/config';
+import ToastService from 'primevue/toastservice';
+import Toast from 'primevue/toast';
 import ConfirmationService from 'primevue/confirmationservice';
-
 import ConfirmPopup from 'primevue/confirmpopup';
 import Fieldset from 'primevue/fieldset';
 import InputText from 'primevue/inputtext';
@@ -18,9 +19,11 @@ import 'primeflex/primeflex.css';
 
 const app = createApp(App);
 
-app.use(PrimeVue, {ripple: true});
+app.use(PrimeVue);
+app.use(ToastService);
 app.use(ConfirmationService);
 
+app.component('Toast', Toast);
 app.component('ConfirmPopup', ConfirmPopup);
 app.component('Fieldset', Fieldset);
 app.component('InputText', InputText);

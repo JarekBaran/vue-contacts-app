@@ -1,8 +1,8 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
   <h1>Vue Contacts App</h1>
-  <Form />
-  <Table />
+  <Form :editContact="contact" />
+  <Table @modifyContact="setContact($event)" />
 </template>
 
 <script>
@@ -14,6 +14,16 @@ export default {
   components: {
     Form,
     Table
+  },
+  data() {
+   return {
+     contact: {}
+    }
+  },
+  methods: {
+    setContact(contact) {
+      this.contact = contact;
+    }
   }
 }
 </script>

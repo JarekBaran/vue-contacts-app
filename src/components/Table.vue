@@ -10,6 +10,7 @@
       <td>{{ contact.country }}</td>
       <td>{{ contact.city }}</td>
       <td>{{ contact.address }}</td>
+      <td><button @click="$emit('modifyContact', contact)">Modify</button></td>
       <td><button @click="deleteContact(contact.id)">Remove</button></td>
     </tr>
   </table>
@@ -19,6 +20,7 @@
 import axios from 'axios';
 export default {
   name: 'Table',
+  emits: ['modifyContact'],
   created() {
     this.getContacts();
   },

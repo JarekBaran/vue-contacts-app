@@ -68,6 +68,7 @@ export default {
 
   #app {
     text-align: center;
+    margin: 16px;
   }
 
 </style>

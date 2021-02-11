@@ -1,13 +1,13 @@
 <template>
   <h2>Contacts List</h2>
-  <DataTable :value="contacts" class="p-datatable-gridlines p-datatable-striped">
-    <Column field="name" header="Name"></Column>
-    <Column field="last_name" header="Code"></Column>
-    <Column field="phone_number" header="Phone number"></Column>
-    <Column field="email" header="E-mail"></Column>
-    <Column field="country" header="Country"></Column>
-    <Column field="city" header="City"></Column>
-    <Column field="address" header="Address"></Column>
+  <DataTable :value="contacts" :paginator="true" :rows="10" class="p-datatable-gridlines p-datatable-striped">
+    <Column :sortable="true" field="name" header="Name"></Column>
+    <Column :sortable="true" field="last_name" header="Code"></Column>
+    <Column :sortable="true" field="phone_number" header="Phone number"></Column>
+    <Column :sortable="true" field="email" header="E-mail"></Column>
+    <Column :sortable="true" field="country" header="Country"></Column>
+    <Column :sortable="true" field="city" header="City"></Column>
+    <Column :sortable="true" field="address" header="Address"></Column>
     <Column field="contact" header="Contact">
       <template #body="slotProps">
         <Button label="Modify" @click="modify($event, slotProps.data)" icon="pi pi-user-edit" class="p-button-info" />

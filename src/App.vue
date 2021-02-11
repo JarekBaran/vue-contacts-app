@@ -3,7 +3,7 @@
 
   <h1>Vue Contacts App</h1>
 
-  <h3 v-if="message">{{ message }}</h3>
+  <Message v-if="message">{{ message }}</Message>
 
   <Form :data="contact" @updateContact="updateContact($event)" @addContact="addContact($event)" />
 

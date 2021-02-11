@@ -1,8 +1,12 @@
 import { createApp } from 'vue';
+import App from './App.vue';
+
 import PrimeVue from 'primevue/config';
+import ConfirmationService from 'primevue/confirmationservice';
+
+import ConfirmPopup from 'primevue/confirmpopup';
 import InputText from 'primevue/inputtext';
 import Button from 'primevue/button';
-import App from './App.vue';
 
 import 'primevue/resources/themes/saga-blue/theme.css';
 import 'primevue/resources/primevue.min.css';
@@ -12,6 +16,9 @@ import 'primeflex/primeflex.css';
 const app = createApp(App);
 
 app.use(PrimeVue);
+app.use(ConfirmationService);
+
+app.component('ConfirmPopup', ConfirmPopup);
 app.component('InputText', InputText);
 app.component('Button', Button);
 

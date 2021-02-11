@@ -30,8 +30,8 @@
         <label for="address">Address</label>
       </span>
       <span class="p-buttonset">
-        <Button label="Modify item" v-if="contact.id" @click="$emit('updateContact', contact)" icon="pi pi-check-circle" class="p-button-info" />
-        <Button label="Add new item" @click="$emit('addContact', contact)" icon="pi pi-save" class="p-button-danger" />
+        <Button label="Modify item" v-if="contact.id" @click="update($event, contact)" icon="pi pi-check-circle" class="p-button-info" />
+        <Button label="Add new item" @click="add($event, contact)" icon="pi pi-save" class="p-button-danger" />
       </span>
     </form>
 </template>
@@ -44,6 +44,28 @@ export default {
     contact() {
       return {...this.data}
     }
+  },
+  methods: {
+    update(event, contact) {
+      this.$confirm.require({
+        target: event.currentTarget,
+        message: `Are you sure you want to update id:${contact.id}?`,
+        icon: 'pi pi-exclamation-triangle',
+        accept: () => {
+          this.$emit('updateContact', contact);
+        }
+      });
+    },
+    add(event, contact) {
+      this.$confirm.require({
+        target: event.currentTarget,
+        message: `Are you sure you want to add new contact?`,
+        icon: 'pi pi-exclamation-triangle',
+        accept: () => {
+          this.$emit('addContact', contact);
+        }
+      });
+    },
   }
 }
 </script>

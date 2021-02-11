@@ -9,6 +9,8 @@
 
   <Table :contacts="contacts" @modifyContact="modifyContact($event)" @deleteContact="deleteContact($event)" />
 
+  <ConfirmPopup />
+
 </template>
 
 <script>

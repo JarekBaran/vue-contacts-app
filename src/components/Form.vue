@@ -43,7 +43,7 @@ export default {
     update(event, contact) {
       this.$confirm.require({
         target: event.currentTarget,
-        message: `Are you sure you want to update id:${contact.id}?`,
+        message: `Are you sure you want to update contact ${contact.name} ${contact.last_name}?`,
         icon: 'pi pi-exclamation-triangle',
         accept: () => this.$emit('updateContact', contact)
       });
@@ -51,7 +51,7 @@ export default {
     add(event, contact) {
       this.$confirm.require({
         target: event.currentTarget,
-        message: `Are you sure you want to add new contact?`,
+        message: `Are you sure you want to add new contact ${contact.name} ${contact.last_name}?`,
         icon: 'pi pi-exclamation-triangle',
         accept: () => this.$emit('addContact', contact)
       });

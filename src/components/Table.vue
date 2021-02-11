@@ -11,7 +11,7 @@
     <Column field="contact" header="Contact">
       <template #body="slotProps">
         <Button label="Modify" @click="modify($event, slotProps.data)" icon="pi pi-user-edit" class="p-button-info" />
-        <Button label="Remove" @click="remove($event, slotProps.data.id)" icon="pi pi-trash" class="p-button-danger" />
+        <Button label="Remove" @click="remove($event, slotProps.data)" icon="pi pi-trash" class="p-button-danger" />
       </template>
     </Column>
   </DataTable>
@@ -26,17 +26,17 @@ export default {
     modify(event, contact) {
       this.$confirm.require({
         target: event.currentTarget,
-        message: `Are you sure you want to modify id:${contact.id}?`,
+        message: `Are you sure you want to modify contact ${contact.name} ${contact.last_name}?`,
         icon: 'pi pi-exclamation-triangle',
         accept: () => this.$emit('modifyContact', contact)
       });
     },
-    remove(event, id) {
+    remove(event, contact) {
       this.$confirm.require({
         target: event.currentTarget,
-        message: `Are you sure you want to remove id:${id}?`,
+        message: `Are you sure you want to remove contact ${contact.name} ${contact.last_name}?`,
         icon: 'pi pi-exclamation-triangle',
-        accept: () => this.$emit('deleteContact', id)
+        accept: () => this.$emit('deleteContact', contact)
       });
     },
   }

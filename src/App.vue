@@ -50,25 +50,25 @@ export default {
     },
     addContact(contact) {
       axios.post(`http://test01.varid.pl:4080/api/contact`, contact)
-        .then(() => this.$toast.add({severity:'success', summary: 'Success', detail:'Contact added!', life: 3000}))
+        .then(() => this.$toast.add({severity:'success', summary: 'Success', detail:`Contact ${contact.name} ${contact.last_name} added!`, life: 5000}))
         .then(() => this.getContacts())
         .catch((error) => {
-          this.$toast.add({severity:'error', summary: 'Error', detail:'Error on add contact', life: 3000});
+          this.$toast.add({severity:'error', summary: 'Error', detail:`Error on add ${contact.name} ${contact.last_name} contact`, life: 3000});
           console.error(error);
         })
     },
     updateContact(contact) {
       axios.put(`http://test01.varid.pl:4080/api/contact/${contact.id}`, contact)
-        .then(() => this.$toast.add({severity:'info', summary: 'Success', detail:'Contact updated!', life: 3000}))
+        .then(() => this.$toast.add({severity:'info', summary: 'Modified', detail:`Contact ${contact.name} ${contact.last_name} updated!`, life: 5000}))
         .then(() => this.getContacts())
         .catch((error) => {
-          this.$toast.add({severity:'error', summary: 'Error', detail:'Error on update contact', life: 3000});
+          this.$toast.add({severity:'error', summary: 'Error', detail:`Error on update ${contact.name} ${contact.last_name} contact`, life: 3000});
           console.error(error);
         })
     },
-    deleteContact(id) {
-      axios.delete(`http://test01.varid.pl:4080/api/contact/delete/${id}`)
-        .then(() => this.$toast.add({severity:'warn', summary: 'Success', detail:'Contact deleted!', life: 3000}))
+    deleteContact(contact) {
+      axios.delete(`http://test01.varid.pl:4080/api/contact/delete/${contact.id}`)
+        .then(() => this.$toast.add({severity:'warn', summary: 'Removed', detail:`Contact ${contact.name} ${contact.last_name} deleted!`, life: 5000}))
         .then(() => this.getContacts())
         .catch((error) => {
           this.$toast.add({severity:'error', summary: 'Error', detail:'Error on delete contact', life: 3000});

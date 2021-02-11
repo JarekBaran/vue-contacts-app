@@ -3,9 +3,9 @@
 
   <h1>Vue Contacts App</h1>
 
-  <Message v-if="message">{{ message }}</Message>
-
   <Form :data="contact" @updateContact="updateContact($event)" @addContact="addContact($event)" />
+
+  <Message v-if="message">{{ message }}</Message>
 
   <Table :contacts="contacts" @modifyContact="modifyContact($event)" @deleteContact="deleteContact($event)" />
 
@@ -81,7 +81,7 @@ export default {
 <style>
 
   #app {
-
+    text-align: center;
   }
 
 </style>

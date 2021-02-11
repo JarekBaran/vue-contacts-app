@@ -10,6 +10,7 @@ import InputText from 'primevue/inputtext';
 import Button from 'primevue/button';
 import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
+import Fieldset from 'primevue/fieldset';
 
 import 'primevue/resources/themes/saga-blue/theme.css';
 import 'primevue/resources/primevue.min.css';
@@ -27,5 +28,6 @@ app.component('InputText', InputText);
 app.component('Button', Button);
 app.component('DataTable', DataTable);
 app.component('Column', Column);
+app.component('Fieldset', Fieldset);
 
 app.mount('#app');

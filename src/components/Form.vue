@@ -1,39 +1,33 @@
 <template>
-  <h2>Add/modify contact</h2>
-    <form @submit.prevent>
-      <span class="p-field">
-        <InputText type="text" id="name" required v-model="contact.name" />
-        <label for="name">Name</label>
-      </span>
-      <span class="p-field">
-        <InputText type="text" id="last_name" required v-model="contact.last_name" />
-        <label for="last_name">Last name</label>
-      </span>
-      <span class="p-field">
-        <InputText type="tel" id="phone_number" required v-model="contact.phone_number" />
-        <label for="phone_number">Phone number</label>
-      </span>
-      <span class="p-field">
-        <InputText type="email" id="email" required v-model="contact.email" />
-        <label for="email">E-mail</label>
-      </span>
-      <span class="p-field">
-        <InputText type="text" id="country" required v-model="contact.country" />
-        <label for="country">Country</label>
-      </span>
-      <span class="p-field">
-        <InputText type="text" id="city" required v-model="contact.city" />
-        <label for="city">City</label>
-      </span>
-      <span class="p-field">
-        <InputText type="text" id="address" required v-model="contact.address" />
-        <label for="address">Address</label>
-      </span>
-      <span class="p-buttonset">
+  <form @submit.prevent class="p-d-flex p-jc-center">
+    <Fieldset legend="Add/modify contact" class="p-fluid p-text-left">
+      <label for="name">Name</label>
+      <InputText type="text" id="name" required v-model="contact.name" />
+
+      <label for="last_name">Last name</label>
+      <InputText type="text" id="last_name" required v-model="contact.last_name" />
+
+      <label for="phone_number">Phone number</label>
+      <InputText type="tel" id="phone_number" required v-model="contact.phone_number" />
+
+      <label for="email">E-mail</label>
+      <InputText type="email" id="email" required v-model="contact.email" />
+
+      <label for="country">Country</label>
+      <InputText type="text" id="country" required v-model="contact.country" />
+
+      <label for="city">City</label>
+      <InputText type="text" id="city" required v-model="contact.city" />
+
+      <label for="address">Address</label>
+      <InputText type="text" id="address" required v-model="contact.address" />
+
+      <span class="p-buttonset p-mt-3">
         <Button label="Modify item" v-if="contact.id" @click="update($event, contact)" icon="pi pi-check-circle" class="p-button-info" />
         <Button label="Add new item" @click="add($event, contact)" icon="pi pi-save" class="p-button-danger" />
       </span>
-    </form>
+    </Fieldset>
+  </form>
 </template>
 
 <script>
@@ -71,5 +65,18 @@ export default {
 </script>
 
 <style scoped>
+
+  fieldset {
+    max-width: 600px;
+  }
+
+  label {
+    font-weight: 600;
+    margin-left: 5px;
+  }
+
+  input {
+    margin: 10px 0;
+  }
 
 </style>

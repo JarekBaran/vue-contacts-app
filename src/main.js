@@ -8,8 +8,8 @@ import Message from 'primevue/message';
 import ConfirmPopup from 'primevue/confirmpopup';
 import InputText from 'primevue/inputtext';
 import Button from 'primevue/button';
-
-
+import DataTable from 'primevue/datatable';
+import Column from 'primevue/column';
 
 import 'primevue/resources/themes/saga-blue/theme.css';
 import 'primevue/resources/primevue.min.css';
@@ -25,5 +25,7 @@ app.component('Message', Message);
 app.component('ConfirmPopup', ConfirmPopup);
 app.component('InputText', InputText);
 app.component('Button', Button);
+app.component('DataTable', DataTable);
+app.component('Column', Column);
 
 app.mount('#app');

@@ -1,18 +1,20 @@
 <template>
   <h2>Contacts List</h2>
-  <table>
-    <tr v-for="contact in contacts" :key="contact.id">
-      <td>{{ contact.name }}</td>
-      <td>{{ contact.last_name }}</td>
-      <td>{{ contact.phone_number }}</td>
-      <td>{{ contact.email }}</td>
-      <td>{{ contact.country }}</td>
-      <td>{{ contact.city }}</td>
-      <td>{{ contact.address }}</td>
-      <td><Button label="Modify" @click="modify($event, contact)" icon="pi pi-user-edit" class="p-button-info" /></td>
-      <td><Button label="Remove" @click="remove($event, contact.id)" icon="pi pi-trash" class="p-button-danger" /></td>
-    </tr>
-  </table>
+  <DataTable :value="contacts" class="p-datatable-gridlines p-datatable-striped">
+    <Column field="name" header="Name"></Column>
+    <Column field="last_name" header="Code"></Column>
+    <Column field="phone_number" header="Phone number"></Column>
+    <Column field="email" header="E-mail"></Column>
+    <Column field="country" header="Country"></Column>
+    <Column field="city" header="City"></Column>
+    <Column field="address" header="Address"></Column>
+    <Column field="contact" header="Contact">
+        <template #body="slotProps">
+          <Button label="Modify" @click="modify($event, slotProps.data)" icon="pi pi-user-edit" class="p-button-info" />
+          <Button label="Remove" @click="remove($event, slotProps.data.id)" icon="pi pi-trash" class="p-button-danger" />
+        </template>
+    </Column>
+  </DataTable>
 </template>
 
 <script>
@@ -46,5 +48,10 @@ export default {
 </script>
 
 <style scoped>
+
+  button {
+    width: 100%;
+    margin-top: 3px;
+  }
 
 </style>

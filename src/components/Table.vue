@@ -9,10 +9,10 @@
     <Column field="city" header="City"></Column>
     <Column field="address" header="Address"></Column>
     <Column field="contact" header="Contact">
-        <template #body="slotProps">
-          <Button label="Modify" @click="modify($event, slotProps.data)" icon="pi pi-user-edit" class="p-button-info" />
-          <Button label="Remove" @click="remove($event, slotProps.data.id)" icon="pi pi-trash" class="p-button-danger" />
-        </template>
+      <template #body="slotProps">
+        <Button label="Modify" @click="modify($event, slotProps.data)" icon="pi pi-user-edit" class="p-button-info" />
+        <Button label="Remove" @click="remove($event, slotProps.data.id)" icon="pi pi-trash" class="p-button-danger" />
+      </template>
     </Column>
   </DataTable>
 </template>
@@ -28,9 +28,7 @@ export default {
         target: event.currentTarget,
         message: `Are you sure you want to modify id:${contact.id}?`,
         icon: 'pi pi-exclamation-triangle',
-        accept: () => {
-          this.$emit('modifyContact', contact);
-        }
+        accept: () => this.$emit('modifyContact', contact)
       });
     },
     remove(event, id) {
@@ -38,9 +36,7 @@ export default {
         target: event.currentTarget,
         message: `Are you sure you want to remove id:${id}?`,
         icon: 'pi pi-exclamation-triangle',
-        accept: () => {
-          this.$emit('deleteContact', id);
-        }
+        accept: () => this.$emit('deleteContact', id)
       });
     },
   }

@@ -45,9 +45,7 @@ export default {
         target: event.currentTarget,
         message: `Are you sure you want to update id:${contact.id}?`,
         icon: 'pi pi-exclamation-triangle',
-        accept: () => {
-          this.$emit('updateContact', contact);
-        }
+        accept: () => this.$emit('updateContact', contact)
       });
     },
     add(event, contact) {
@@ -55,9 +53,7 @@ export default {
         target: event.currentTarget,
         message: `Are you sure you want to add new contact?`,
         icon: 'pi pi-exclamation-triangle',
-        accept: () => {
-          this.$emit('addContact', contact);
-        }
+        accept: () => this.$emit('addContact', contact)
       });
     },
   }

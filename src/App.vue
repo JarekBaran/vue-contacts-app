@@ -1,14 +1,9 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
-
   <h1>Vue Contacts App</h1>
 
   <Form :data="contact" @updateContact="updateContact($event)" @addContact="addContact($event)" />
-
-  <Message v-if="message">{{ message }}</Message>
-
   <Table :contacts="contacts" @modifyContact="modifyContact($event)" @deleteContact="deleteContact($event)" />
-
   <ConfirmPopup />
 
 </template>
@@ -36,7 +31,6 @@ export default {
         address: ``,
       },
       contacts: [],
-      message: ``,
     }
   },
   created() {
@@ -48,31 +42,23 @@ export default {
     },
     getContacts() {
       axios.get(`http://test01.varid.pl:4080/api/contacts`)
-        .then((response) => {
-          this.contacts = response.data;
-        })
-        .catch((error) => {
-          this.message = `Error retrieving data`;
-          console.error(error);
-        })
+        .then((response) => this.contacts = response.data )
+        .catch((error) => console.error(error))
     },
     addContact(contact) {
       axios.post(`http://test01.varid.pl:4080/api/contact`, contact)
-        .then(() => this.message = `New contact added`)
         .then(() => this.getContacts())
-        .catch(error => console.error(error))
+        .catch((error) => console.error(error))
     },
     updateContact(contact) {
       axios.put(`http://test01.varid.pl:4080/api/contact/${contact.id}`, contact)
-        .then(() => this.message = `Contact ${contact.id} modified`)
         .then(() => this.getContacts())
-        .catch(error => console.error(error))
+        .catch((error) => console.error(error))
     },
     deleteContact(id) {
       axios.delete(`http://test01.varid.pl:4080/api/contact/delete/${id}`)
-        .then(() => this.message = `Contact ${id} deleted`)
         .then(() => this.getContacts())
-        .catch(error => console.error(error))
+        .catch((error) => console.error(error))
     }
   }
 }

@@ -4,13 +4,12 @@ import App from './App.vue';
 import PrimeVue from 'primevue/config';
 import ConfirmationService from 'primevue/confirmationservice';
 
-import Message from 'primevue/message';
 import ConfirmPopup from 'primevue/confirmpopup';
+import Fieldset from 'primevue/fieldset';
 import InputText from 'primevue/inputtext';
 import Button from 'primevue/button';
 import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
-import Fieldset from 'primevue/fieldset';
 
 import 'primevue/resources/themes/saga-blue/theme.css';
 import 'primevue/resources/primevue.min.css';
@@ -22,12 +21,11 @@ const app = createApp(App);
 app.use(PrimeVue, {ripple: true});
 app.use(ConfirmationService);
 
-app.component('Message', Message);
 app.component('ConfirmPopup', ConfirmPopup);
+app.component('Fieldset', Fieldset);
 app.component('InputText', InputText);
 app.component('Button', Button);
 app.component('DataTable', DataTable);
 app.component('Column', Column);
-app.component('Fieldset', Fieldset);
 
 app.mount('#app');

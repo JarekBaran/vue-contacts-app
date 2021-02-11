@@ -1,9 +1,14 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
+
   <h1>Vue Contacts App</h1>
+
   <h3 v-if="message">{{ message }}</h3>
+
   <Form :data="contact" @updateContact="updateContact($event)" @addContact="addContact($event)" />
+
   <Table :contacts="contacts" @modifyContact="modifyContact($event)" @deleteContact="deleteContact($event)" />
+
 </template>
 
 <script>
@@ -72,7 +77,9 @@ export default {
 </script>
 
 <style>
-#app {
-  text-align: center;
-}
+
+  #app {
+
+  }
+
 </style>

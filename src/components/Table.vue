@@ -9,8 +9,8 @@
       <td>{{ contact.country }}</td>
       <td>{{ contact.city }}</td>
       <td>{{ contact.address }}</td>
-      <td><button @click="$emit('modifyContact', contact)">Modify</button></td>
-      <td><button @click="$emit('deleteContact', contact.id)">Remove</button></td>
+      <td><Button label="Modify" @click="$emit('modifyContact', contact)" icon="pi pi-user-edit" class="p-button-info" /></td>
+      <td><Button label="Remove" @click="$emit('deleteContact', contact.id)" icon="pi pi-trash" class="p-button-danger" /></td>
     </tr>
   </table>
 </template>

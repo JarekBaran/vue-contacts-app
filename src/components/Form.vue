@@ -45,8 +45,8 @@
       </div>
 
       <span class="p-buttonset p-mt-3">
-        <Button label="Modify item" v-if="contact.id" @click="update($event, contact)" icon="pi pi-check-circle" class="p-button-info" />
-        <Button label="Add new item" @click="add($event, contact)" icon="pi pi-save" class="p-button-danger" />
+        <Button label="Modify item" v-if="contact.id" @click="update($event, contact)" :disabled="isDisabled" icon="pi pi-check-circle" class="p-button-info" />
+        <Button label="Add new item" @click="add($event, contact)" :disabled="isDisabled" icon="pi pi-save" class="p-button-danger" />
       </span>
     </Fieldset>
   </form>
@@ -58,12 +58,20 @@ export default {
   props: ['data'],
   data() {
     return {
-      errors: {}
+      errors: { status: true }
+    }
+  },
+  watch: {
+    data() {
+      this.errors = {}; // clean errors after props data
     }
   },
   computed: {
     contact() {
-      return {...this.data}
+      return {...this.data};
+    },
+    isDisabled() {
+      return this.errors.status && Object.values(this.contact).some(field => (field === '')); // check errors status and empty form fileds
     },
   },
   methods: {
@@ -77,6 +85,7 @@ export default {
       !valid ? e.target.classList.add(`p-invalid`) : e.target.classList.remove(`p-invalid`); // add/remove input not valid css class
 
       this.errors.[e.target.id] = !valid && `Require ${e.target.id}`; // show input error message
+      this.errors.status = !valid; // set errors status when valid / no valid value
     },
     update(event, contact) {
       this.$confirm.require({

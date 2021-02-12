@@ -46,7 +46,7 @@
 
       <span class="p-buttonset p-mt-3">
         <Button label="Modify item" v-if="contact.id" @click="update($event, contact)" :disabled="isDisabled" icon="pi pi-check-circle" class="p-button-info" />
-        <Button label="Add new item" @click="add($event, contact)" :disabled="isDisabled" icon="pi pi-save" class="p-button-danger" />
+        <Button label="Add new item" @click="add($event, contact)" :disabled="isDisabled" icon="pi pi-save" class="p-button-success" />
       </span>
     </Fieldset>
   </form>
@@ -58,12 +58,12 @@ export default {
   props: ['data'],
   data() {
     return {
-      errors: { status: true }
+      errors: {status: true}
     }
   },
   watch: {
     data() {
-      this.errors = {}; // clean errors after props data
+      this.errors = {};
     }
   },
   computed: {
@@ -71,21 +71,21 @@ export default {
       return {...this.data};
     },
     isDisabled() {
-      return this.errors.status && Object.values(this.contact).some(field => (field === '')); // check errors status and empty form fileds
+      return this.errors.status || Object.values(this.contact).some(field => (field === ''));
     },
   },
   methods: {
     isValid(e) {
+
       let valid = (e.target.value !== ``);
 
-      (e.target.type === `tel`) && ( valid = /[()\-+.]*\d+/gmi.test(e.target.value) ); // regex validation for input:tel
-      (e.target.type === `text`) && ( valid = /[a-z]+/gmi.test(e.target.value) ); // regex validation for input:text
+      (e.target.type === `text`) && ( valid = /[a-z]+/gmi.test(e.target.value) );        // regex validation for input:text
+      (e.target.type === `tel`) && ( valid = /[()\-+.]*\d+/gmi.test(e.target.value) );   // regex validation for input:tel
       (e.target.type === `email`) && ( valid = /\S+@\S+\.\S+/gmi.test(e.target.value) ); // regex validation for input:email
 
-      !valid ? e.target.classList.add(`p-invalid`) : e.target.classList.remove(`p-invalid`); // add/remove input not valid css class
+      this.errors.[e.target.id] = !valid && `Require valid ${e.target.id} field.`;
 
-      this.errors.[e.target.id] = !valid && `Require ${e.target.id}`; // show input error message
-      this.errors.status = !valid; // set errors status when valid / no valid value
+      this.errors.status = !valid;
     },
     update(event, contact) {
       this.$confirm.require({
